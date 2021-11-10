@@ -11,7 +11,7 @@ In Contacts_App we are following MVVM architecture
     Used data binding, from XML called ViewModel's functions,
     Some views visibility handled from ViewModel
 4) LiveData -
-    Used LiveData for getting contacts data from ViewModel.
+    Used LiveData for observing contacts data from ViewModel to view.
     Also in ContactDetailsActivity used LiveData for listening UI actions using ENUM ,
     which are called from XML through data binding.
     Observed LiveData from view
