@@ -1,5 +1,6 @@
 package com.example.mycontacts.di.details_act
 
+import android.app.Application
 import com.example.mycontacts.di.DetailsViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -9,7 +10,9 @@ class DetailsActModule {
 
     @Provides
     @DetailsActScope
-    fun providesDetailsViewModelFactory() : DetailsViewModelFactory {
-        return DetailsViewModelFactory()
+    fun providesDetailsViewModelFactory(
+        application: Application
+    ) : DetailsViewModelFactory {
+        return DetailsViewModelFactory(application)
     }
 }

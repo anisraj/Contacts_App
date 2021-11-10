@@ -4,4 +4,5 @@
     <string name="demo_name">Anis Jamadar</string>
     <string name="demo_number">+919552262708</string>
     <string name="searchHint">Search by Name</string>
+    <string name="noResults">No result found</string>
 </resources>

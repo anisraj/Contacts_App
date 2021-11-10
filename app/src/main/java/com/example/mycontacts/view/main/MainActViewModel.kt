@@ -15,6 +15,8 @@ class MainActViewModel(application: Application) : AndroidViewModel(application)
     private val animate = MutableLiveData<String>()
     private val context = getApplication<Application>().applicationContext
     var progressVisible = ObservableField<Int>(View.GONE)
+    var noResultsVisible = ObservableField<Int>(View.GONE)
+
 
     private var columns = listOf<String>(
         ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
@@ -46,23 +48,39 @@ class MainActViewModel(application: Application) : AndroidViewModel(application)
 
     /** This fun using for adding sort character
      *
-     *  @param contacts list of contacts
+     *  @param list list of contacts
      *  @return ArrayList<ContactData> list of contacts after adding sort character
      */
-    private fun addAlphabets(contacts: ArrayList<ContactData>) : ArrayList<ContactData> {
-        var i = 0
-        var customList = ArrayList<ContactData>()
-        for (contactPosition in i..(contacts.size-2)) {
-            var member = ContactData(contacts[contactPosition].name, contacts[contactPosition].mobileNumber, contacts[contactPosition].id, contacts[contactPosition].type, contacts[contactPosition].name.first().toString())
-            if (contacts[contactPosition].name.first().toString() == contacts[contactPosition + 1].name.first().toString()) {
-                member.char = contacts[contactPosition].name.first().toString()
-                member.type = ContactType.MEMBER
-                customList.add(member)
-            } else {
-                member.char = contacts[contactPosition + 1].name.first().toString()
-                member.type = ContactType.HEADER
-                customList.add(member)
+    private fun addAlphabets(list: ArrayList<ContactData>): ArrayList<ContactData> {
+        val customList: ArrayList<ContactData> = ArrayList<ContactData>()
+        if (list.isNotEmpty()) {
+            noResultsVisible.set(View.GONE)
+            val firstMember = ContactData(list[0].name, list[0].mobileNumber, list[0].id, ContactType.MEMBER, "A")
+            firstMember.name = list[0].name
+            firstMember.char = list[0].name.first().toString()
+            firstMember.type = ContactType.HEADER
+            customList.add(firstMember)
+            var i = 0
+            while (i < list.size - 1) {
+                val teamMember = ContactData(list[i].name, list[i].mobileNumber, list[i].id, ContactType.MEMBER, "A")
+                val charOne = list[i].name.first()
+                val charTwo: Char = list[i + 1].name.first()
+                if (charOne == charTwo) {
+                    list[i].type = ContactType.MEMBER
+                    customList.add(list[i])
+                } else {
+                    list[i].type = ContactType.MEMBER
+                    customList.add(list[i])
+                    teamMember.type = ContactType.HEADER
+                    teamMember.char = charTwo.toString()
+                    customList.add(teamMember)
+                }
+                i++
             }
+            list[i].type = ContactType.MEMBER
+            customList.add(list[i])
+        } else {
+            noResultsVisible.set(View.VISIBLE)
         }
         return customList
     }

@@ -73,7 +73,31 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvAppName"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="@{viewModel::refreshData}"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintTop_toTopOf="@+id/tvAppName" />
+
+    <ImageView
+        android:id="@+id/ivNoResults"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/result_not_found"
+        android:visibility="@{viewModel.noResultsVisible}"/>
+
+    <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TitleText.PrimaryText.RalewayRegular"
+        android:padding="@dimen/contact_text_top_padding"
+        android:text="@string/noResults"
+        app:layout_constraintEnd_toEndOf="@+id/ivNoResults"
+        app:layout_constraintStart_toStartOf="@+id/ivNoResults"
+        app:layout_constraintTop_toBottomOf="@+id/ivNoResults"
+        android:visibility="@{viewModel.noResultsVisible}"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
