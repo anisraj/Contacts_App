@@ -8,7 +8,8 @@ In Contacts_App we are following MVVM architecture
 2) Dagger -
     Dagger used for injecting ViewModel Factory dependency
 3) Data Binding -
-    Used data binding, from XML called ViewModel's functions
+    Used data binding, from XML called ViewModel's functions,
+    Some views visibility handled from ViewModel
 4) LiveData -
     Used LiveData for getting contacts data from ViewModel.
     Also in ContactDetailsActivity used LiveData for listening UI actions using ENUM ,
