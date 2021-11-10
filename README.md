@@ -25,4 +25,10 @@ In Contacts_App we are following MVVM architecture
 7) After search if no contact found then shows message
 
 ## ScreenShots
-![Screenshot_2021-11-10-14-49-55-697_com example mycontacts 1](https://user-images.githubusercontent.com/39364582/141087485-df3a501e-e550-44bd-8dc5-7efb480361b0.jpg)
+![Screenshot_2021-11-10-14-49-16-209_com example mycontacts 1](https://user-images.githubusercontent.com/39364582/141089452-72627755-cd2d-4cef-b576-31ef7283f9b8.jpg)
+
+![Screenshot_2021-11-10-14-49-29-559_com example mycontacts 1](https://user-images.githubusercontent.com/39364582/141089544-04c7c8c5-ece4-45a2-b310-b35ccb6c0c2c.jpg)
+
+![Screenshot_2021-11-10-14-49-41-113_com example mycontacts 1](https://user-images.githubusercontent.com/39364582/141089647-aa7a656c-3da1-4894-846a-b86c8c540d5c.jpg)
+
+![Screenshot_2021-11-10-14-49-55-697_com example mycontacts 1](https://user-images.githubusercontent.com/39364582/141089719-25ad32c9-380a-4f63-8a44-3c1d452939aa.jpg)
