@@ -16,6 +16,7 @@ In Contacts_App we are following MVVM architecture
     Observed LiveData from view
 5) Animation -
     360 degree rotation animation added for refresh button
+6) Custom fonts and styles are used
 
 ## Features of the app
 1) Displays all Contacts
