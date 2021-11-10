@@ -21,7 +21,7 @@ class MainActViewModel(application: Application) : AndroidViewModel(application)
     private var columns = listOf<String>(
         ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
         ContactsContract.CommonDataKinds.Phone.NUMBER,
-        ContactsContract.CommonDataKinds.Phone._ID,
+        ContactsContract.Data.CONTACT_ID
     ).toTypedArray()
 
     /** This function is using for reading contacts

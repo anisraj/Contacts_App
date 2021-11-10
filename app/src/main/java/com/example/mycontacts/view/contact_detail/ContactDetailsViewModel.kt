@@ -2,43 +2,54 @@ package com.example.mycontacts.view.contact_detail
 
 import android.app.Application
 import android.content.ContentUris
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.net.Uri
 import android.provider.ContactsContract
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.mycontacts.R
+import android.content.ContentResolver
+import java.lang.Exception
 
 class ContactDetailsViewModel(application: Application) : AndroidViewModel(application) {
 
     private var uiActionLiveData = MutableLiveData<ContactDetailsUiAction>()
     private val context = getApplication<Application>().applicationContext
-    var photoLiveData = MutableLiveData<Bitmap>()
 
     /** This fun used for getting contact photo
-     *  @param contactId by which we get photo
+     *  @param contentResolver content resolver
+     *  @param contactId id of the contact
      */
-    fun getContactPhoto(contactId: String) {
-        var photo = BitmapFactory.decodeResource(
-            context.resources,
-            R.drawable.ic_baseline_person_24
-        )
-        var inputStream = ContactsContract.Contacts.openContactPhotoInputStream(
-            context.contentResolver,
-            ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId.toLong())
-        )
-        if (inputStream != null) {
-            photo = BitmapFactory.decodeStream(inputStream)
+    fun getPhotoUri(contentResolver: ContentResolver, contactId: Long): Uri? {
+        try {
+            val cursor = contentResolver.query(
+                    ContactsContract.Data.CONTENT_URI,
+                    null,
+                    ContactsContract.Data.CONTACT_ID
+                            + "="
+                            + contactId
+                            + " AND "
+                            + ContactsContract.Data.MIMETYPE
+                            + "='"
+                            + ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE
+                            + "'", null, null
+                )
+            if (cursor != null) {
+                if (!cursor.moveToFirst()) {
+                    return null // no photo
+                }
+            } else {
+                return null // error in cursor process
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
         }
-        inputStream?.close()
-        photoLiveData.postValue(photo)
-    }
-
-    /** This fun return photoLiveData for observing in view
-     *  @return MutableLiveData<Bitmap>
-     */
-    fun getPhotoLivedata() : MutableLiveData<Bitmap> {
-        return photoLiveData
+        val person = ContentUris.withAppendedId(
+            ContactsContract.Contacts.CONTENT_URI, contactId
+        )
+        return Uri.withAppendedPath(
+            person,
+            ContactsContract.Contacts.Photo.CONTENT_DIRECTORY
+        )
     }
 
     /** This fun return onclick actions for observing in view

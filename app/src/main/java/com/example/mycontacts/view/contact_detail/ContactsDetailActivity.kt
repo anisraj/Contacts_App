@@ -1,18 +1,13 @@
 package com.example.mycontacts.view.contact_detail
 
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
 import com.example.mycontacts.R
 import com.example.mycontacts.databinding.ActivityContactsDetailBinding
-import com.example.mycontacts.databinding.ActivityMainBinding
 import com.example.mycontacts.di.DetailsViewModelFactory
 import com.example.mycontacts.di.Injector
 import com.example.mycontacts.model.ContactData
@@ -31,7 +26,6 @@ class ContactsDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initializeView()
         getIntentData()
-        observeImage()
         observeUiActions()
     }
 
@@ -73,16 +67,21 @@ class ContactsDetailActivity : AppCompatActivity() {
 
     private fun getIntentData() {
         contactData = intent.getSerializableExtra("contactData") as ContactData
-        if (contactData.id != null) {
-            viewModel.getContactPhoto(contactData.id)
-        }
-        setContactUi(contactData)
-    }
+        binding.ivPhotoBg.clipToOutline = true
 
-    private fun observeImage() {
-        viewModel.getPhotoLivedata().observe(this, Observer {
-            binding.ivPhotoBg.setImageBitmap(it)
-        })
+        /**
+         * by this code we set image of contact, if null default image is set
+         */
+        if (contactData.id != null) {
+            var photoUri = viewModel.getPhotoUri(contentResolver, contactData.id.toLong())
+            if (photoUri != null) {
+                binding.ivPhotoBg.setImageURI(photoUri)
+            } else {
+                binding.ivPhotoBg.setImageResource(R.drawable.ic_baseline_person_24)
+            }
+        }
+
+        setContactUi(contactData)
     }
 
     private fun setContactUi(data: ContactData) {
