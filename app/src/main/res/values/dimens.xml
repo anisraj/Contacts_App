@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_view_margin">15dp</dimen>
+    <dimen name="contacts_rv_top">20dp</dimen>
+    <dimen name="sort_char_size">15sp</dimen>
+    <dimen name="contact_char_size">14sp</dimen>
+    <dimen name="sort_char_top_padding">8dp</dimen>
+    <dimen name="contact_text_top_padding">10dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="searchview_top_padding">12dp</dimen>
+    <dimen name="searchview_start_padding">10dp</dimen>
+    <dimen name="title_size">25dp</dimen>
+    <dimen name="action_icon_padding">15dp</dimen>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TitleText.PrimaryText.RalewayRegular" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/title_size</item>
+    </style>
+    <style name="SortText.PrimaryText.RalewayBold" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/sort_char_size</item>
+    </style>
+    <style name="ContactsText.PrimaryText.RalewayRegular" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/contact_char_size</item>
+    </style>
+    <style name="ContactsText.SecondaryText.RalewayRegular" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">@dimen/contact_char_size</item>
+    </style>
+    <style name="ContactsSearchText.PrimaryText.RalewayRegular" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="hintTextColor">@color/secondary_text</item>
+        <item name="android:textSize">@dimen/contact_char_size</item>
+    </style>
+</resources>
