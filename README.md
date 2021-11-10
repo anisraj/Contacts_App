@@ -5,15 +5,17 @@ In Contacts_App we are following MVVM architecture
 
 ## Code Structure
 1) Project developed entirely in Kotlin
-2) Dagger
+2) Dagger -
     Dagger used for injecting ViewModel Factory dependency
-3) Data Binding
+3) Data Binding -
     Used data binding, from XML called ViewModel's functions
-4) LiveData
+4) LiveData -
     Used LiveData for getting contacts data from ViewModel.
     Also in ContactDetailsActivity used LiveData for listening UI action methods ,
     which are called from XML through data binding.
     Observed LiveData from view
+5) Animation -
+    360 degree rotation animation added for refresh button
 
 ## Features of the app
 1) Displays all Contacts
